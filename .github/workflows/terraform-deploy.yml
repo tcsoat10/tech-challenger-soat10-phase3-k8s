@@ -28,11 +28,11 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Init
-        run: |
-          terraform init \
-            -backend-config="bucket=terraform-state-tech-challenge-1" \
-            -backend-config="key=terraform-kube/terraform.tfstate" 
+#      - name: Terraform Init
+#        run: |
+#          terraform init \
+#            -backend-config="bucket=terraform-state-tech-challenge-1" \
+#            -backend-config="key=terraform-kube/terraform.tfstate" 
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
