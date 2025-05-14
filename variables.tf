@@ -3,7 +3,7 @@ variable "aws_region" {
 }
 
 variable "cluster_name" {
-  default = "meu-cluster-eks"
+  default = "soat10tc-cluster-eks"
 }
 
 variable "vpc_cidr_block" {
@@ -31,5 +31,5 @@ variable "policy_arn" {
 }
 
 variable "instance_type" {
-  default = "t3.medium"
+  default = "t3.micro"
 }
