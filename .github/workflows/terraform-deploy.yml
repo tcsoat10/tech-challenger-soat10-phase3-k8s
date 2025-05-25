@@ -34,10 +34,7 @@ jobs:
 #            -backend-config="key=terraform-kube/terraform.tfstate" 
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform plan -destroy -out=tfplan
 
-#      - name: Terraform Apply
-#        run: terraform apply -auto-approve tfplan
-#      
-      - name: Terrafrom Destroy
-        run: terraform destroy -auto-approve tfplan
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
