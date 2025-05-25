@@ -7,38 +7,37 @@ terraform {
 }
 
 # Grupo de Segurança
-#resource "aws_security_group" "eks_sg" {
-#  name        = "${var.cluster_name}-sg"
-#  vpc_id      = data.aws_vpc.vpc.id
-#
-#  # Regras de entrada
-#  ingress {
-#    from_port   = 0
-#    to_port     = 0
-#    protocol    = "-1"
-#    cidr_blocks = ["0.0.0.0/0"]
-#  }
-#  # Regras de saída
-#  egress {
-#    from_port   = 0
-#    to_port     = 0
-#    protocol    = "-1"
-#    cidr_blocks = ["0.0.0.0/0"]
-#  }
-#}
+resource "aws_security_group" "eks_sg" {
+  name        = "${var.cluster_name}-sg"
+  vpc_id      = data.aws_vpc.vpc.id
+  # Regras de entrada
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  # Regras de saída
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 
-# Definição do cluster EKS
-#resource "aws_eks_cluster" "cluster" {
-#  name     = var.cluster_name
-#  role_arn = var.aws_iam_role
-#  vpc_config {
-#    subnet_ids         = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.aws_region}e"]
-#    security_group_ids = [aws_security_group.eks_sg.id]
-#  }
-#  access_config {
-#    authentication_mode = var.accessConfig
-#  }
-#}
+ Definição do cluster EKS
+resource "aws_eks_cluster" "cluster" {
+  name     = var.cluster_name
+  role_arn = var.aws_iam_role
+  vpc_config {
+    subnet_ids         = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.aws_region}e"]
+    security_group_ids = [aws_security_group.eks_sg.id]
+  }
+  access_config {
+    authentication_mode = var.accessConfig
+  }
+}
 
 resource "aws_eks_access_entry" "eks-access-entry" {
   cluster_name      = aws_eks_cluster.cluster.name
@@ -76,15 +75,15 @@ resource "aws_eks_node_group" "eks-node" {
   }
 }
 
-#resource "aws_ecr_repository" "meu_repositorio" {
-#  name = "soattc"
-#
-#  image_scanning_configuration {
-#    scan_on_push = true
-#  }
-#
-#  tags = {
-#    Environment = "Production"
-#    Owner       = "DevOps"
-#  }
-#}
+resource "aws_ecr_repository" "meu_repositorio" {
+  name = "soattc"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = {
+    Environment = "Production"
+    Owner       = "DevOps"
+  }
+}
