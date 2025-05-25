@@ -3,9 +3,7 @@ provider "aws" {
 }
 
 terraform {
-  backend "local" {
-    path = "./terraform.tfstate"
-  }
+  backend "s3" {}
 }
 
 # Grupo de Segurança
