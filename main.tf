@@ -7,25 +7,25 @@ terraform {
 }
 
 # Grupo de Segurança
-resource "aws_security_group" "eks_sg" {
-  name        = "${var.cluster_name}-sg"
-  vpc_id      = data.aws_vpc.vpc.id
-
-  # Regras de entrada
-  ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  # Regras de saída
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+#resource "aws_security_group" "eks_sg" {
+#  name        = "${var.cluster_name}-sg"
+#  vpc_id      = data.aws_vpc.vpc.id
+#
+#  # Regras de entrada
+#  ingress {
+#    from_port   = 0
+#    to_port     = 0
+#    protocol    = "-1"
+#    cidr_blocks = ["0.0.0.0/0"]
+#  }
+#  # Regras de saída
+#  egress {
+#    from_port   = 0
+#    to_port     = 0
+#    protocol    = "-1"
+#    cidr_blocks = ["0.0.0.0/0"]
+#  }
+#}
 
 # Definição do cluster EKS
 resource "aws_eks_cluster" "cluster" {
@@ -76,15 +76,15 @@ resource "aws_eks_node_group" "eks-node" {
   }
 }
 
-resource "aws_ecr_repository" "meu_repositorio" {
-  name = "soattc"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-
-  tags = {
-    Environment = "Production"
-    Owner       = "DevOps"
-  }
-}
+#resource "aws_ecr_repository" "meu_repositorio" {
+#  name = "soattc"
+#
+#  image_scanning_configuration {
+#    scan_on_push = true
+#  }
+#
+#  tags = {
+#    Environment = "Production"
+#    Owner       = "DevOps"
+#  }
+#}
