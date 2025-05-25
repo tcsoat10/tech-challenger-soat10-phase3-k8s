@@ -26,7 +26,7 @@ resource "aws_security_group" "eks_sg" {
   }
 }
 
- Definição do cluster EKS
+# Definição do cluster EKS
 resource "aws_eks_cluster" "cluster" {
   name     = var.cluster_name
   role_arn = var.aws_iam_role
