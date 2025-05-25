@@ -33,11 +33,11 @@ jobs:
           terraform init \
             -backend-config="bucket=10soatterraformst" \
             -backend-config="key=terraform-kube/terraform.tfstate"
-            
-#      - name: Terraform Destroy
-#        run: terraform destroy -auto-approve
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+#      - name: Terraform Plan
+#        run: terraform plan -out=tfplan
+#
+#      - name: Terraform Apply
+#        run: terraform apply -auto-approve tfplan
