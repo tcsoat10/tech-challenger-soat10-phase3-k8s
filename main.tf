@@ -73,7 +73,12 @@ resource "aws_eks_node_group" "eks-node" {
     max_size     = 2
   }
 
-  resource "aws_ecr_repository" "meu_repositorio" {
+  update_config {
+    max_unavailable = 1
+  }
+}
+
+resource "aws_ecr_repository" "meu_repositorio" {
   name = "soattc"
 
   image_scanning_configuration {
@@ -83,10 +88,5 @@ resource "aws_eks_node_group" "eks-node" {
   tags = {
     Environment = "Production"
     Owner       = "DevOps"
-  }
-}
-
-  update_config {
-    max_unavailable = 1
   }
 }
