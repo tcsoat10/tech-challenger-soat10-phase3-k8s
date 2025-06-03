@@ -2,8 +2,8 @@ name: Terraform Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  pull_request:
 
 env:
   REGION_DEFAULT: "us-east-1"
@@ -40,4 +40,5 @@ jobs:
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
