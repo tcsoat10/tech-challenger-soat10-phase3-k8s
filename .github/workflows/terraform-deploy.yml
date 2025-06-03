@@ -31,7 +31,7 @@ jobs:
       - name: Terraform Init
         run: |
           terraform init \
-            -backend-config="bucket=10soatterraformst" \
+            -backend-config="bucket=10soatterraformstf" \
             -backend-config="key=terraform-kube/terraform.tfstate"
 
 #      - name: Terraform Destroy
