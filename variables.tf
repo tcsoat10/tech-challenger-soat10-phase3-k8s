@@ -11,7 +11,7 @@ variable "vpc_cidr_block" {
 }
 
 variable "aws_iam_role" {
-  default = "arn:aws:iam::414132512745:role/LabRole"
+  default = "arn:aws:iam::739439895240:role/LabRole"
 }
 
 variable "accessConfig" {
@@ -23,7 +23,7 @@ variable "node_name" {
 }
 
 variable "principal_arn" {
-  default = "arn:aws:iam::414132512745:role/voclabs"
+  default = "arn:aws:iam::739439895240:role/voclabs"
 }
 
 variable "policy_arn" {
