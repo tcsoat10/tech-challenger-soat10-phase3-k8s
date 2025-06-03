@@ -63,7 +63,6 @@ resource "aws_eks_node_group" "eks-node" {
   subnet_ids      = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.aws_region}e"]
   disk_size       = 30
   instance_types  = [var.instance_type]
-  ami_type        = var.ami
 
   scaling_config {
     desired_size = 1
