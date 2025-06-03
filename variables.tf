@@ -31,9 +31,5 @@ variable "policy_arn" {
 }
 
 variable "instance_type" {
-  default = "t4g.small"
-}
-
-variable "ami" {
-  default = "AL2023_ARM_64_STANDARD"
+  default = "t3.small"
 }
