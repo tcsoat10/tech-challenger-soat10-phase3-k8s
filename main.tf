@@ -29,7 +29,7 @@ resource "aws_security_group" "eks_sg" {
 # Definição do cluster EKS
 resource "aws_eks_cluster" "cluster" {
   name     = var.cluster_name
-  role_arn = var.aws_iam_role
+  role_arn = "arn:aws:iam::${locals.account_id}:role/LabRole"
   vpc_config {
     subnet_ids         = [for subnet in data.aws_subnet.subnet : subnet.id if subnet.availability_zone != "${var.aws_region}e"]
     security_group_ids = [aws_security_group.eks_sg.id]
@@ -41,7 +41,7 @@ resource "aws_eks_cluster" "cluster" {
 
 resource "aws_eks_access_entry" "eks-access-entry" {
   cluster_name      = aws_eks_cluster.cluster.name
-  principal_arn     = var.principal_arn
+  principal_arn     = "arn:aws:iam::${locals.account_id}:role/voclabs"
   kubernetes_groups = ["my-nodes-group"]
   type              = "STANDARD"
 }
