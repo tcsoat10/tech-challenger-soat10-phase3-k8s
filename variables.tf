@@ -10,20 +10,12 @@ variable "vpc_cidr_block" {
   default = ["172.31.0.0/16"]
 }
 
-variable "aws_iam_role" {
-  default = "arn:aws:iam::739439895240:role/LabRole"
-}
-
 variable "accessConfig" {
   default = "API_AND_CONFIG_MAP"
 }
 
 variable "node_name" {
   default = "my-nodes-group"
-}
-
-variable "principal_arn" {
-  default = "arn:aws:iam::739439895240:role/voclabs"
 }
 
 variable "policy_arn" {
